@@ -1,0 +1,12 @@
+.word-table .word-row { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.5fr) minmax(0, .8fr) minmax(0, .7fr) 76px 80px; }
+.word-review-count { color: rgb(var(--muted)); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.word-sort { display: flex; align-items: center; gap: 6px; padding: 4px 0; background: transparent; border: 0; text-align: left; font: inherit; text-transform: uppercase; color: inherit; }
+.word-sort.active, .word-sort:hover { color: rgb(var(--brand)); }
+.word-sort svg { flex-shrink: 0; }
+.word-sort:focus-visible { outline: 2px solid rgb(var(--brand)); outline-offset: 4px; border-radius: 3px; }
+.vocabulary-sort-select { display: none; }
+@media (max-width: 1000px) { .vocabulary-sort-select { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-size: 13px; } .vocabulary-sort-select select { flex: 1; min-width: 0; } }
+.word-review-count.has-reviews { color: rgb(var(--brand)); font-weight: 700; }
+.word-card > .word-review-count { display: block; margin-top: 12px; }
+.word-card > .word-review-count::before { content: 'Đã ôn: '; color: rgb(var(--muted)); font-weight: 400; }
+@media (min-width: 721px) and (max-width: 1000px) { .word-table .word-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) .7fr 65px 65px; } .word-table .word-row > :nth-child(3) { display: none; } }

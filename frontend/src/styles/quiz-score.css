@@ -1,0 +1,25 @@
+.score-mood { --score-color: #586b65; --score-rgb: 88 107 101; }
+.score-mood-encourage { --score-color: #b34e2b; --score-rgb: 179 78 43; }
+.score-mood-steady { --score-color: #886509; --score-rgb: 136 101 9; }
+.score-mood-good { --score-color: #2876a5; --score-rgb: 40 118 165; }
+.score-mood-great { --score-color: #19816b; --score-rgb: 25 129 107; }
+.score-mood-perfect { --score-color: #99700b; --score-rgb: 153 112 11; }
+.dark .score-mood { --score-color: #b1c5bc; --score-rgb: 177 197 188; }
+.dark .score-mood-encourage { --score-color: #f6a17d; --score-rgb: 246 161 125; }
+.dark .score-mood-steady { --score-color: #e4c56b; --score-rgb: 228 197 107; }
+.dark .score-mood-good { --score-color: #80c4ed; --score-rgb: 128 196 237; }
+.dark .score-mood-great { --score-color: #63d4b4; --score-rgb: 99 212 180; }
+.dark .score-mood-perfect { --score-color: #f6ce62; --score-rgb: 246 206 98; }
+.quiz-live-score.score-mood { border-color: rgb(var(--score-rgb) / .4); background: linear-gradient(115deg, rgb(var(--score-rgb) / .12), transparent), var(--panel); transition: background .4s, border-color .4s; }
+.quiz-live-score.score-mood strong, .score-mood .score-ring strong, .score-mood.quiz-result h1 { color: var(--score-color); }
+.score-message { flex-basis: 100%; display: grid; gap: 4px; }
+.score-message b { color: var(--score-color); font-size: 13px; }
+.score-message span { line-height: 1.6; }
+.score-arrival { animation: score-arrival .55s ease-out both; }
+.score-mood .score-track { stroke: rgb(var(--score-rgb) / .18); }
+.score-mood .score-arc { stroke: var(--score-color); }
+.score-mood.quiz-result { background: radial-gradient(ellipse at 50% 190px, rgb(var(--score-rgb) / .13), transparent 55%); }
+.score-celebration { display: inline-block; color: var(--score-color); letter-spacing: 14px; padding-left: 14px; font-size: 28px; animation: score-celebrate 1s ease-out both; }
+@keyframes score-arrival { from { opacity: .35; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes score-celebrate { 0% { opacity: 0; transform: scale(.6); } 60% { opacity: 1; transform: scale(1.15); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .score-arrival, .score-celebration { animation: none; } .quiz-live-score.score-mood, .score-mood .score-arc { transition: none; } }

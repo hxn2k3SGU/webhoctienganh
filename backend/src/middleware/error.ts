@@ -1,0 +1,5 @@
+import type { ErrorRequestHandler,RequestHandler } from "express";import {ZodError} from "zod";
+/** Trả lỗi 404 cho route không tồn tại. */
+export const notFound:RequestHandler=(_q,res)=>res.status(404).json({error:"Not found"});
+/** Xử lý lỗi tập trung: lỗi kiểm tra dữ liệu trả 400, lỗi có `status` trả đúng mã, còn lại trả 500. */
+export const errors:ErrorRequestHandler=(e,_q,res,_n)=>{if(e instanceof ZodError)return res.status(400).json({error:"Validation failed",message:"Thông tin nhập chưa hợp lệ. Vui lòng kiểm tra lại các trường.",details:e.flatten()});if((e as any).code==="SQLITE_CONSTRAINT_UNIQUE")return res.status(409).json({error:"Already exists",message:String(e.message).includes("cards.word")?"Từ tiếng Anh này đã có trong thư viện. Hãy sửa từ đã có hoặc chọn tên khác; thay đổi của bạn chưa được lưu.":"Thông tin này đã tồn tại. Vui lòng chọn giá trị khác."});console.error(e);res.status(500).json({error:"Internal server error",message:"Máy chủ chưa xử lý được yêu cầu. Vui lòng thử lại."});};

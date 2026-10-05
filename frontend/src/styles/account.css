@@ -1,0 +1,8 @@
+.account-bar { display: flex; align-items: center; justify-content: flex-end; gap: 16px; min-height: 56px; padding: 8px 32px; border-bottom: 1px solid rgb(var(--line)); }
+.account-name { min-width: 0; max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; color: rgb(var(--muted)); }
+.account-logout { display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-shrink: 0; min-height: 40px; padding: 8px 12px; border: 1px solid rgb(var(--line)); border-radius: 8px; background: var(--panel); color: rgb(var(--ink)); font-size: 13px; cursor: pointer; }
+.account-logout:hover { border-color: rgb(var(--brand)); color: rgb(var(--brand)); }
+.account-logout:focus-visible { outline: 2px solid rgb(var(--brand)); outline-offset: 3px; }
+.account-logout:disabled { opacity: .65; cursor: wait; }
+.account-error { margin: 12px 24px; color: rgb(var(--coral)); font-size: 13px; }
+@media (max-width: 720px) { .account-bar { padding: 8px 17px; padding-top: max(8px, env(safe-area-inset-top)); justify-content: space-between; } }

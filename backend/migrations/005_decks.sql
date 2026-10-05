@@ -1,0 +1,6 @@
+CREATE TABLE decks (
+  name TEXT PRIMARY KEY COLLATE NOCASE,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+ALTER TABLE cards ADD COLUMN deck TEXT REFERENCES decks(name);
+CREATE INDEX idx_cards_deck ON cards(deck);

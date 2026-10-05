@@ -1,0 +1,18 @@
+.login-form h2 { font-size: 32px; letter-spacing: 0; line-height: 1.2; }
+.login-form > label { font-size: 13px; }
+.login-form > label > input { border: 1px solid rgb(var(--line)); background: var(--panel); }
+.login-form > label > input, .password-field { border-radius: 8px; }
+.login-form > label > input, .password-field input { font-size: 16px; min-height: 48px; }
+.login-security, .login-password-note { font-family: inherit; font-size: 12px; line-height: 1.6; }
+.login-error { border-radius: 8px; font-size: 13px; }
+.login-form button:disabled { cursor: wait; }
+.login-form .auth-switch { margin: 24px 0 0; text-align: center; }
+.auth-switch a { color: rgb(var(--brand)); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 720px) {
+  .login-copy { padding-top: 24px; }
+  .login-copy h1 { font-size: 34px; letter-spacing: 0; }
+  .login-form h2 { font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .login-brand, .login-copy, .login-word, .login-form { animation: none; }
+}

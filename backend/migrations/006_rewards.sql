@@ -1,0 +1,8 @@
+CREATE TABLE quiz_activity (
+  session_id TEXT PRIMARY KEY,
+  studied_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE achievements (
+  id TEXT PRIMARY KEY,
+  unlocked_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

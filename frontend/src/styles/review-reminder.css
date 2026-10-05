@@ -1,0 +1,15 @@
+.review-reminder { position: fixed; right: 24px; bottom: 24px; z-index: 40; width: min(380px, calc(100vw - 32px)); padding: 20px; border: 1px solid rgb(var(--brand) / .4); border-radius: 18px; background: linear-gradient(130deg, rgb(var(--brand) / .1), transparent 65%), var(--panel); box-shadow: 0 12px 45px #0002; animation: reminder-in .25s ease-out; }
+.review-reminder-heading { display: flex; align-items: flex-start; gap: 12px; }
+.review-reminder-heading > svg { flex-shrink: 0; color: rgb(var(--brand)); }
+.review-reminder-heading strong { font-size: 15px; }
+.review-reminder-heading p { margin: 7px 0 12px; color: rgb(var(--muted)); font-size: 13px; line-height: 1.6; }
+.review-reminder-link { color: rgb(var(--brand)); font-size: 13px; font-weight: 700; }
+.review-reminder-actions { display: flex; gap: 10px; margin-top: 16px; }
+.review-reminder-actions > button { flex: 1; }
+.review-reminder-options { display: grid; gap: 7px; margin-top: 12px; }
+.review-reminder-options button { padding: 10px; text-align: left; background: var(--soft); border: 1px solid rgb(var(--line)); border-radius: 9px; font-size: 13px; }
+.review-reminder-options button:hover { border-color: rgb(var(--brand)); }
+.review-reminder > small { display: block; margin-top: 12px; font-size: 11px; color: rgb(var(--muted)); }
+@keyframes reminder-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 720px) { .review-reminder { right: 16px; bottom: calc(80px + env(safe-area-inset-bottom)); max-height: calc(100dvh - 110px); overflow-y: auto; } }
+@media (prefers-reduced-motion: reduce) { .review-reminder { animation: none; } }
