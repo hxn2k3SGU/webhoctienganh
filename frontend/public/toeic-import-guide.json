@@ -1,0 +1,17 @@
+{
+  "_guide": "Huong dan, KHONG phai de thi. Thay toan bo noi dung mau va dien du 200 cau that truoc khi nhap. Khong de truong _guide cung khong anh huong viec nhap.",
+  "_structure": { "Part1": "1-6: 6 cau", "Part2": "7-31: 25 cau", "Part3": "32-70: 39 cau", "Part4": "71-100: 30 cau", "Part5": "101-130: 30 cau", "Part6": "131-146: 16 cau", "Part7": "147-200: 54 cau" },
+  "_audio": "Mot file HTTPS Listening day du, gom chi dan va khoang dung, can tuong ung khoang 45 phut. Kiem tra audio va quyen su dung truoc khi nhap. Khong dung URL trang web thay cho file audio.",
+  "_questions": "Moi cau co id duy nhat, number 1-200, part 1-7 va answer A/B/C/D (Part 2 chi A/B/C). Part 1 can imageUrl. Part 3-7 can prompt va 4 options. Part 6-7 can passage day du; lap lai doan van cho moi cau cung nhom, co the them groupId. explanation tuy chon. URL hinh va audio phai la HTTPS.",
+  "title": "TEN DE CO QUYEN SU DUNG",
+  "sourceName": "TEN DON VI CUNG CAP DE",
+  "sourceUrl": "https://example.com/nguon-de",
+  "usagePermission": "GHI RO QUYEN SU DUNG HOAC GIAY PHEP CUA DE",
+  "listeningAudioUrl": "https://example.com/listening-full.mp3",
+  "questions": [
+    { "id": "q1", "number": 1, "part": 1, "imageUrl": "https://example.com/question-1.jpg", "answer": "A", "explanation": "Giai thich cua nguon de neu co" },
+    { "id": "q7", "number": 7, "part": 2, "answer": "B" },
+    { "id": "q32", "number": 32, "part": 3, "groupId": "conversation-1", "prompt": "CAU HOI THAT", "options": ["LUA CHON A", "LUA CHON B", "LUA CHON C", "LUA CHON D"], "answer": "C" },
+    { "id": "q131", "number": 131, "part": 6, "groupId": "text-1", "passage": "NOI DUNG DAY DU CUA BAI DOC, GOM CAC CHO TRONG DANH SO", "prompt": "CAU HOI THAT", "options": ["LUA CHON A", "LUA CHON B", "LUA CHON C", "LUA CHON D"], "answer": "D" }
+  ]
+}

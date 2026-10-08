@@ -7,7 +7,6 @@ import { authMiddleware, authRouter } from "./auth";
 import { rateLimits, originGuard } from "./middleware/security";
 import { errors, notFound } from "./middleware/error";
 import { workspaces } from "./workspaces";
-import { imagesRouter } from "./routes/images";
 
 export interface AppOptions { config?: AppConfig; disableAuth?: boolean }
 /**
@@ -31,7 +30,6 @@ export function createApp(db: DB, options: AppOptions = {}) {
   app.locals.closeWorkspaces = spaces.close;
   app.use("/uploads", authenticated);
   app.use("/api", originGuard(config), authenticated);
-  app.use("/api/images", imagesRouter(config));
   app.use("/api/vocabulary/import", rateLimits.imports);
   /** Chuyển request đã xác thực tới workspace (database riêng) của người dùng. */
   app.use((req, res, next) => req.auth ? spaces.forUser(req.auth.userId)(req, res, next) : next());

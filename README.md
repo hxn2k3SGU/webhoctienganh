@@ -6,14 +6,14 @@
 
 - **Quản lý từ vựng:** thêm, sửa, xóa, tìm kiếm, lọc theo trạng thái/tag/deck, sắp xếp và phân trang.
 - **Deck:** chia từ vựng thành nhiều bộ thẻ để học riêng.
-- **Flashcard:** thẻ lật 3D, phát âm bằng file audio hoặc Web Speech API, có ảnh minh họa.
+- **Flashcard:** thẻ lật 3D, phát âm bằng file audio hoặc Web Speech API.
 - **Lịch ôn SRS:** bốn mức đánh giá Again, Hard, Good, Easy; ba chế độ học: ôn đến hạn, học từ mới, ôn ngẫu nhiên.
 - **Quiz:** chọn nghĩa, gõ từ, điền vào câu (câu ví dụ có thể tạo bằng Gemini) và nghe viết, có gợi ý từng chữ cái.
+- **TOEIC:** luyện 7 Part với 60 câu mẫu chính thức IIBC/ETS; lưu đáp án, đánh dấu, chấm bài và lịch sử riêng từng tài khoản. Hỗ trợ nhập đề đủ 200 câu để thi thử có bấm giờ.
 - **Trò chơi:** ghép cặp từ–nghĩa, lật thẻ trí nhớ, Khối hộp và Blast.
 - **Nhập/xuất:** nhập từ CSV, XLSX, PDF (có xem trước và sửa trước khi nhập); xuất CSV, XLSX, JSON.
-- **Tìm ảnh bằng AI:** Gemini gợi ý từ khóa, ảnh lấy từ Wikimedia Commons kèm nguồn và giấy phép.
 - **Tiến độ:** dashboard, chuỗi ngày học, huy hiệu, lời nhắc ôn tập.
-- **Nhiều tài khoản:** mỗi tài khoản có thư viện, tiến độ, cài đặt và ảnh riêng.
+- **Nhiều tài khoản:** mỗi tài khoản có thư viện, tiến độ, cài đặt riêng.
 - **Giao diện:** responsive, chế độ sáng/tối/theo hệ thống.
 
 ## Công nghệ
@@ -39,7 +39,7 @@
 │   │   ├── db/              # Kết nối, migration, seed
 │   │   ├── middleware/      # Bảo mật, xử lý lỗi
 │   │   ├── routes/          # Các nhóm API
-│   │   └── services/        # SRS, nhập/xuất file, Gemini, tìm ảnh
+│   │   └── services/        # SRS, nhập/xuất file, Gemini
 │   ├── migrations/          # File SQL tạo/cập nhật schema
 │   ├── seeds/words.csv      # 100 từ mẫu
 │   └── tests/
@@ -64,6 +64,14 @@
 - npm 10 trở lên
 
 `better-sqlite3` và `argon2` là native module. Nếu `npm install` lỗi trên Windows, hãy dùng bản Node.js LTS và cài [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) với workload **Desktop development with C++**.
+
+## Chạy nhanh trên Windows
+
+Bấm đúp file **`Chay-Web.bat`** trong thư mục dự án. File sẽ cài thư viện nếu chưa có (cần Internet ở lần đầu), tạo `backend/.env` nếu chưa tồn tại, chạy backend cùng database SQLite và frontend, rồi tự mở **Microsoft Edge** tại [http://localhost:5173](http://localhost:5173) khi frontend sẵn sàng. Máy cần cài Node.js 20 trở lên, npm 10 trở lên và Microsoft Edge.
+
+Giữ cửa sổ lệnh mở khi sử dụng. Để dừng, nhấn **Ctrl+C** trong cửa sổ đó và chọn **Y** nếu được hỏi. Dữ liệu đã có được giữ lại; database tự cập nhật cấu trúc khi khởi động. Nếu cổng 3001 hoặc 5173 đang được sử dụng, hãy dừng phiên web cũ trước khi chạy lại.
+
+Để chạy từ Desktop, tạo **shortcut** trỏ tới `Chay-Web.bat` (chuột phải vào file → **Send to → Desktop (create shortcut)**). Giữ file `.bat` gốc trong thư mục dự án; không copy riêng file này ra Desktop vì nó cần các file bên cạnh để khởi động.
 
 ## Cài đặt và chạy
 
@@ -129,12 +137,12 @@ Các biến đặt trong `backend/.env`:
 | `PORT` | `3001` | Cổng của API |
 | `DEV_ORIGINS` | `http://localhost:5173,http://127.0.0.1:5173` | Các origin được phép gọi API |
 | `DATABASE_PATH` | `./data/lexiloop.db` | File database chính (tính từ thư mục `backend`) |
-| `UPLOAD_DIR` | `./data/uploads` | Thư mục lưu ảnh tải lên |
+| `UPLOAD_DIR` | `./data/uploads` | Thư mục phục vụ file âm thanh cục bộ đã có |
 | `TZ` |  | Múi giờ, ví dụ `Asia/Ho_Chi_Minh` |
 | `ACCESS_TOKEN_TTL_MINUTES` | `15` | Thời gian sống của access token |
 | `REFRESH_TOKEN_TTL_DAYS` | `7` | Thời gian sống của refresh token |
 | `AUTH_TOKEN_SECRET` |  | Khóa ký access token (≥ 32 ký tự). Nếu bỏ trống, mỗi lần khởi động server sẽ tạo khóa tạm mới |
-| `GEMINI_API_KEY` |  | Khóa Gemini cho quiz điền vào câu và tìm ảnh bằng AI |
+| `GEMINI_API_KEY` |  | Khóa Gemini cho quiz điền vào câu |
 | `GEMINI_MODEL` | `gemini-3.8-flash` | Model Gemini sử dụng |
 
 ## Xác thực
@@ -169,9 +177,20 @@ File PDF phải có lớp văn bản (bôi đen và sao chép được), tối �
 Cần đặt `GEMINI_API_KEY` trong `backend/.env` và có kết nối Internet. Khóa chỉ dùng ở backend, không gửi xuống trình duyệt.
 
 - **Quiz điền vào câu:** ưu tiên câu ví dụ có sẵn; chỉ gọi Gemini cho từ chưa có câu hợp lệ (tối đa 5 từ mỗi lượt, 2 lượt song song, khoảng 20 giây cho mỗi quiz). Câu tạo được chỉ lưu vào từ đang trống ví dụ, không ghi đè ví dụ bạn đã nhập.
-- **Tìm ảnh bằng AI:** trong form thêm/sửa từ, chọn **Tìm ảnh bằng AI**. Gemini gợi ý từ khóa theo nghĩa, ảnh lấy từ Wikimedia Commons. Ảnh được lưu dưới dạng URL, kèm nguồn, tác giả và giấy phép.
 
 Chỉ id, từ và nghĩa của từ cần xử lý được gửi tới Google. Việc gọi Gemini có thể phát sinh phí hoặc giới hạn lượt dùng.
+
+## Luyện Và Thi Thử TOEIC
+
+Thư viện TOEIC Building đã tải trên máy có **55 đề ETS / 11.000 câu**. Mở mục **TOEIC** để chọn đề và dùng hình/audio cục bộ. Có **49 đề thi thử đầy đủ**; 6 đề còn thiếu nội dung hoặc media ngay tại nguồn nên chỉ mở luyện tập và hiển thị cảnh báo. Dữ liệu nằm trong `backend/data/toeicbuilding/` (không đưa vào Git); cần sao chép thư mục này khi chuyển web sang máy khác. Xem [hướng dẫn và báo cáo tải](imports/toeicbuilding/README.md).
+
+Chọn **TOEIC** trên thanh điều hướng. Bộ mẫu tích hợp có 60 câu, giữ nguyên số câu của [nguồn chính thức IIBC](https://www.iibc-global.org/english/toeic/test/lr/about/format.html). Nút **Mở đề và audio gốc** mở trang nguồn trong tab riêng; chọn đáp án trên LexiLoop. Nội dung đề, hình và audio không được sao chép vào dự án. Có thể tham khảo thêm [PDF mẫu ETS](https://www.ets.org/pdfs/toeic/toeic-listening-reading-sample-test.pdf). Đáp án mẫu được kiểm tra ngày 07/10/2026. Trang nguồn có đáp án; hãy xem sau khi nộp bài.
+
+- **Luyện tập:** chọn toàn bộ mẫu hoặc một Part, không giới hạn thời gian hoặc đặt đồng hồ. Mỗi câu trả lời được lưu trên server; có thể đóng trang rồi tiếp tục từ lịch sử. Lượt có bấm giờ vẫn tính thời gian khi đóng trang.
+- **Thi thử đầy đủ:** cần đề đủ 200 câu theo thứ tự Part 1–7: 6, 25, 39, 30, 30, 16, 54 câu. Listening tối thiểu 45 phút, kéo dài theo audio nguồn nếu cần; Reading 75 phút. Server khóa phần thi ngoài thời gian và chấm bài khi hết giờ. Audio dùng file HTTPS hoặc media cục bộ của thư viện. Nếu tải lại trang, nhấn **Phát / khôi phục audio** để nghe tiếp theo thời gian thi.
+- **Nguồn đề:** mẫu 60 câu không phải bài thi đầy đủ. Đề JSON nhập cần có nguồn, quyền sử dụng, nội dung và đáp án; hệ thống kiểm tra cấu trúc, không xác nhận chất lượng hay gắn nhãn đề chính thức cho nội dung nhập. Tải hướng dẫn tại `frontend/public/toeic-import-guide.json` hoặc trong mục **Thêm đề đủ 200 câu**. Hướng dẫn không chứa đề dùng để thi.
+- **Chấm điểm:** hiển thị Listening /495, Reading /495, tổng /990, số câu đúng/sai/bỏ trống, tỷ lệ đúng, thời gian làm bài và kết quả từng Part. Điểm quy đổi là **tham khảo theo bảng PREP**, không phải điểm chứng chỉ ETS hoặc bảng riêng của TOEIC Building (trang nguồn tính điểm trên máy chủ). Chỉ quy đổi kỹ năng có đủ 100 câu; bài luyện ngắn không suy rộng điểm. Điểm được lưu khi nộp/hết giờ và hiển thị trong lịch sử, kể cả các kết quả cũ.
+- **Dữ liệu:** đề nhập và lượt thi lưu trong `toeic_tests`, `toeic_attempts` ở database của tài khoản; độc lập với từ vựng và lịch sử ôn flashcard. Hình của đề TOEIC chỉ dùng cho câu hỏi TOEIC, không khôi phục chức năng ảnh flashcard.
 
 ## Phím tắt khi học
 
@@ -185,7 +204,7 @@ Chỉ id, từ và nghĩa của từ cần xử lý được gửi tới Google.
 
 - Database chính: `backend/data/lexiloop.db`
 - Database của từng tài khoản: `backend/data/accounts/`
-- Ảnh tải lên: `backend/data/uploads/`
+- File âm thanh cục bộ (nếu có): `backend/data/uploads/`
 
 Thư mục `backend/data/` và file `backend/.env` đã nằm trong `.gitignore` nên không bị đẩy lên GitHub. Để sao lưu, dùng **Xuất JSON backup** trong trang Cài đặt, hoặc sao chép thư mục `backend/data/` khi ứng dụng đã dừng.
 

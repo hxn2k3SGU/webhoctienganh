@@ -1,4 +1,5 @@
 import { z } from "zod";
+export * from "./toeic";
 
 export const loginSchema = z.object({
   username: z.string().trim().min(3).max(64).regex(/^[A-Za-z0-9._-]+$/),
@@ -20,7 +21,6 @@ export const createCardSchema = z.object({
   pronunciation: z.string().trim().max(120).optional().nullable(),
   partOfSpeech: z.string().trim().max(80).optional().nullable(),
   topic: topicSchema,
-  imageUrl: optionalText,
   audioUrl: optionalText,
   tags: z.array(z.string().trim().min(1).max(40)).max(20).default([])
 });
@@ -40,7 +40,7 @@ export const vocabularyInputSchema = z.object({
   word: z.string().trim().min(1).max(120), meaning: z.string().trim().min(1).max(500),
   pronunciation: z.string().trim().max(120).optional().default(""), example: z.string().trim().max(2000).optional().default(""),
   partOfSpeech: z.string().trim().max(80).optional().default(""), synonyms: z.array(z.string().trim().min(1).max(120)).max(30).default([]),
-  imageUrl: z.string().trim().max(2000).optional().default(""), audioUrl: z.string().trim().max(2000).optional().default(""),
+  audioUrl: z.string().trim().max(2000).optional().default(""),
   tag: z.string().trim().min(1).max(120), status: frontendStatusSchema.optional(), deck: z.string().trim().max(100).optional()
 });
 export const settingsSchema = z.object({ quizQuestionCount: z.number().int().min(1).max(50).default(10), dailyNewLimit: z.number().int().min(1).max(100), dailyReviewLimit: z.number().int().min(5).max(500), soundEffects: z.boolean().default(true), speechVolume: z.number().int().min(0).max(100).default(100), soundEffectsVolume: z.number().int().min(0).max(100).default(100), autoPlayAudio: z.boolean(), showExamplesFirst: z.boolean(), theme: z.enum(["light","dark","system"]) });
@@ -53,7 +53,6 @@ export const importRowSchema = z.object({
   example: z.string().trim().max(2000).default(""),
   partOfSpeech: z.string().trim().max(80).default(""),
   synonyms: z.array(z.string().trim().min(1).max(120)).max(30).default([]),
-  imageUrl: z.string().trim().max(2000).default(""),
   tag: z.string().trim().min(1).max(120).default("General")
 });
 export const importCommitSchema = z.object({

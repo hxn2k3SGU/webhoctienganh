@@ -4,7 +4,7 @@ import { commitRows } from "../src/services/importExport";
 
 it("imports into new or existing decks and leaves skipped words in their original deck", () => {
   const db = openDb(":memory:"); migrate(db);
-  const row = { word: "apple", meaning: "fruit", pronunciation: "", example: "", partOfSpeech: "noun", synonyms: [], imageUrl: "", tag: "General" };
+  const row = { word: "apple", meaning: "fruit", pronunciation: "", example: "", partOfSpeech: "noun", synonyms: [], tag: "General" };
   try {
     commitRows(db, [row], "skip", "Food");
     commitRows(db, [{ ...row, word: "pear" }], "skip", "Food");

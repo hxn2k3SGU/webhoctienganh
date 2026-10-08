@@ -1,0 +1,778 @@
+{
+  "sourceUrl": "https://test.toeicbuilding.com.vn/part",
+  "inspectedOn": "2026-10-08",
+  "status": "ets_library_downloaded_with_source_gaps",
+  "note": "Catalog metadata for 110 entries. The 55 ETS tests are downloaded to backend/data/toeicbuilding; 49 support full mode and 6 have source defects. See download-summary.json. Supplementary lessons and placement exercises are not part of the ETS library.",
+  "entries": [
+    {
+      "sourceId": "1",
+      "title": "Test đầu vào 1 1",
+      "category": null,
+      "sourceCategoryId": "4",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/1"
+    },
+    {
+      "sourceId": "2",
+      "title": "test đầu vào 2",
+      "category": null,
+      "sourceCategoryId": "3",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/2"
+    },
+    {
+      "sourceId": "3",
+      "title": "mini test 1",
+      "category": null,
+      "sourceCategoryId": "5",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/3"
+    },
+    {
+      "sourceId": "4",
+      "title": "Bài test đầu vào 1",
+      "category": null,
+      "sourceCategoryId": "4",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/4"
+    },
+    {
+      "sourceId": "7",
+      "title": "TEST 1",
+      "category": "ETS 2022",
+      "sourceCategoryId": "7",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/7"
+    },
+    {
+      "sourceId": "8",
+      "title": "TEST 2",
+      "category": "ETS 2022",
+      "sourceCategoryId": "7",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/8"
+    },
+    {
+      "sourceId": "10",
+      "title": "TEST 3",
+      "category": "ETS 2022",
+      "sourceCategoryId": "7",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/10"
+    },
+    {
+      "sourceId": "11",
+      "title": "TEST 4",
+      "category": "ETS 2022",
+      "sourceCategoryId": "7",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/11"
+    },
+    {
+      "sourceId": "12",
+      "title": "TEST 5",
+      "category": "ETS 2022",
+      "sourceCategoryId": "7",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/12"
+    },
+    {
+      "sourceId": "13",
+      "title": "TEST 6",
+      "category": "ETS 2022",
+      "sourceCategoryId": "7",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/13"
+    },
+    {
+      "sourceId": "14",
+      "title": "TEST 7",
+      "category": "ETS 2022",
+      "sourceCategoryId": "7",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/14"
+    },
+    {
+      "sourceId": "15",
+      "title": "TEST 8",
+      "category": "ETS 2022",
+      "sourceCategoryId": "7",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/15"
+    },
+    {
+      "sourceId": "16",
+      "title": "TEST 9",
+      "category": "ETS 2022",
+      "sourceCategoryId": "7",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/16"
+    },
+    {
+      "sourceId": "17",
+      "title": "TEST 10",
+      "category": "ETS 2022",
+      "sourceCategoryId": "7",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/17"
+    },
+    {
+      "sourceId": "18",
+      "title": "TEST 1",
+      "category": "ETS 2023",
+      "sourceCategoryId": "10",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/18"
+    },
+    {
+      "sourceId": "19",
+      "title": "TEST 2",
+      "category": "ETS 2023",
+      "sourceCategoryId": "10",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/19"
+    },
+    {
+      "sourceId": "20",
+      "title": "TEST 3",
+      "category": "ETS 2023",
+      "sourceCategoryId": "10",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/20"
+    },
+    {
+      "sourceId": "21",
+      "title": "TEST 4",
+      "category": "ETS 2023",
+      "sourceCategoryId": "10",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/21"
+    },
+    {
+      "sourceId": "22",
+      "title": "TEST 5",
+      "category": "ETS 2023",
+      "sourceCategoryId": "10",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/22"
+    },
+    {
+      "sourceId": "23",
+      "title": "TEST 6",
+      "category": "ETS 2023",
+      "sourceCategoryId": "10",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/23"
+    },
+    {
+      "sourceId": "24",
+      "title": "TEST 7",
+      "category": "ETS 2023",
+      "sourceCategoryId": "10",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/24"
+    },
+    {
+      "sourceId": "25",
+      "title": "TEST 8",
+      "category": "ETS 2023",
+      "sourceCategoryId": "10",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/25"
+    },
+    {
+      "sourceId": "26",
+      "title": "TEST 9",
+      "category": "ETS 2023",
+      "sourceCategoryId": "10",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/26"
+    },
+    {
+      "sourceId": "27",
+      "title": "TEST 10",
+      "category": "ETS 2023",
+      "sourceCategoryId": "10",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/27"
+    },
+    {
+      "sourceId": "28",
+      "title": "TEST 1",
+      "category": "ETS 2021",
+      "sourceCategoryId": "11",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/28"
+    },
+    {
+      "sourceId": "29",
+      "title": "TEST 2",
+      "category": "ETS 2021",
+      "sourceCategoryId": "11",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/29"
+    },
+    {
+      "sourceId": "30",
+      "title": "TEST 3",
+      "category": "ETS 2021",
+      "sourceCategoryId": "11",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/30"
+    },
+    {
+      "sourceId": "31",
+      "title": "TEST 4",
+      "category": "ETS 2021",
+      "sourceCategoryId": "11",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/31"
+    },
+    {
+      "sourceId": "32",
+      "title": "TEST 5",
+      "category": "ETS 2021",
+      "sourceCategoryId": "11",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/32"
+    },
+    {
+      "sourceId": "33",
+      "title": "TEST 1",
+      "category": "ETS 2020",
+      "sourceCategoryId": "12",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/33"
+    },
+    {
+      "sourceId": "34",
+      "title": "TEST 2",
+      "category": "ETS 2020",
+      "sourceCategoryId": "12",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/34"
+    },
+    {
+      "sourceId": "35",
+      "title": "TEST 3",
+      "category": "ETS 2020",
+      "sourceCategoryId": "12",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/35"
+    },
+    {
+      "sourceId": "36",
+      "title": "TEST 4",
+      "category": "ETS 2020",
+      "sourceCategoryId": "12",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/36"
+    },
+    {
+      "sourceId": "37",
+      "title": "TEST 5",
+      "category": "ETS 2020",
+      "sourceCategoryId": "12",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/37"
+    },
+    {
+      "sourceId": "38",
+      "title": "TEST 6",
+      "category": "ETS 2020",
+      "sourceCategoryId": "12",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/38"
+    },
+    {
+      "sourceId": "39",
+      "title": "TEST 7",
+      "category": "ETS 2020",
+      "sourceCategoryId": "12",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/39"
+    },
+    {
+      "sourceId": "40",
+      "title": "TEST 8",
+      "category": "ETS 2020",
+      "sourceCategoryId": "12",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/40"
+    },
+    {
+      "sourceId": "41",
+      "title": "TEST 9",
+      "category": "ETS 2020",
+      "sourceCategoryId": "12",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/41"
+    },
+    {
+      "sourceId": "42",
+      "title": "TEST 10",
+      "category": "ETS 2020",
+      "sourceCategoryId": "12",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/42"
+    },
+    {
+      "sourceId": "43",
+      "title": "TEST 1 ETS 2024",
+      "category": "ETS 2024",
+      "sourceCategoryId": "14",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/43"
+    },
+    {
+      "sourceId": "44",
+      "title": "TEST 0",
+      "category": null,
+      "sourceCategoryId": "",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/44"
+    },
+    {
+      "sourceId": "45",
+      "title": "TEST 2 ETS 2024",
+      "category": "ETS 2024",
+      "sourceCategoryId": "14",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/45"
+    },
+    {
+      "sourceId": "46",
+      "title": "TEST 3 ETS 2024",
+      "category": "ETS 2024",
+      "sourceCategoryId": "14",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/46"
+    },
+    {
+      "sourceId": "47",
+      "title": "TEST 4 ETS 2024",
+      "category": "ETS 2024",
+      "sourceCategoryId": "14",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/47"
+    },
+    {
+      "sourceId": "48",
+      "title": "TEST 1 ETS 2026",
+      "category": "ETS 2026",
+      "sourceCategoryId": "15",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/48"
+    },
+    {
+      "sourceId": "49",
+      "title": "TEST 5 ETS 2024",
+      "category": "ETS 2024",
+      "sourceCategoryId": "14",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/49"
+    },
+    {
+      "sourceId": "50",
+      "title": "TEST 6 ETS 2024",
+      "category": "ETS 2024",
+      "sourceCategoryId": "14",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/50"
+    },
+    {
+      "sourceId": "51",
+      "title": "TEST 7 ETS 2024",
+      "category": "ETS 2024",
+      "sourceCategoryId": "14",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/51"
+    },
+    {
+      "sourceId": "52",
+      "title": "TEST 8 ETS 2024",
+      "category": "ETS 2024",
+      "sourceCategoryId": "14",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/52"
+    },
+    {
+      "sourceId": "53",
+      "title": "TEST 9 ETS 2024",
+      "category": "ETS 2024",
+      "sourceCategoryId": "14",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/53"
+    },
+    {
+      "sourceId": "54",
+      "title": "TEST 10 ETS 2024",
+      "category": "ETS 2024",
+      "sourceCategoryId": "14",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/54"
+    },
+    {
+      "sourceId": "55",
+      "title": "TEST 2 ETS 2026",
+      "category": "ETS 2026",
+      "sourceCategoryId": "15",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/55"
+    },
+    {
+      "sourceId": "56",
+      "title": "TEST 3 ETS 2026",
+      "category": "ETS 2026",
+      "sourceCategoryId": "15",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/56"
+    },
+    {
+      "sourceId": "57",
+      "title": "TEST 4 ETS 2026",
+      "category": "ETS 2026",
+      "sourceCategoryId": "15",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/57"
+    },
+    {
+      "sourceId": "58",
+      "title": "TEST 5 ETS 2026",
+      "category": "ETS 2026",
+      "sourceCategoryId": "15",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/58"
+    },
+    {
+      "sourceId": "59",
+      "title": "TEST 6 ETS 2026",
+      "category": "ETS 2026",
+      "sourceCategoryId": "15",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/59"
+    },
+    {
+      "sourceId": "60",
+      "title": "TEST 7 ETS 2026",
+      "category": "ETS 2026",
+      "sourceCategoryId": "15",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/60"
+    },
+    {
+      "sourceId": "61",
+      "title": "TEST 8 ETS 2026",
+      "category": "ETS 2026",
+      "sourceCategoryId": "15",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/61"
+    },
+    {
+      "sourceId": "62",
+      "title": "TEST 9 ETS 2026",
+      "category": "ETS 2026",
+      "sourceCategoryId": "15",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/62"
+    },
+    {
+      "sourceId": "63",
+      "title": "TEST 10 ETS 2026",
+      "category": "ETS 2026",
+      "sourceCategoryId": "15",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/63"
+    },
+    {
+      "sourceId": "64",
+      "title": "TOPIC 1",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/64"
+    },
+    {
+      "sourceId": "65",
+      "title": "TOPIC 2",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/65"
+    },
+    {
+      "sourceId": "66",
+      "title": "TOPIC 3",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/66"
+    },
+    {
+      "sourceId": "67",
+      "title": "WHO - WHOM - WHOSE",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/67"
+    },
+    {
+      "sourceId": "68",
+      "title": "WHERE",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/68"
+    },
+    {
+      "sourceId": "69",
+      "title": "WHEN",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/69"
+    },
+    {
+      "sourceId": "70",
+      "title": "WHAT/WHICH",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/70"
+    },
+    {
+      "sourceId": "71",
+      "title": "WHY",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/71"
+    },
+    {
+      "sourceId": "72",
+      "title": "HOW",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/72"
+    },
+    {
+      "sourceId": "73",
+      "title": "PRACTICE OF WH-QUESTIONS",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/73"
+    },
+    {
+      "sourceId": "74",
+      "title": "1A YES/NO QUESTIONS",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/74"
+    },
+    {
+      "sourceId": "75",
+      "title": "1B YES/NO QUESTIONS",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/75"
+    },
+    {
+      "sourceId": "76",
+      "title": "NEGATIVE QUESTIONS",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/76"
+    },
+    {
+      "sourceId": "77",
+      "title": "EMBEDDED QUESTIONS",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/77"
+    },
+    {
+      "sourceId": "78",
+      "title": "ALTERNATIVE QUESTIONS",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/78"
+    },
+    {
+      "sourceId": "79",
+      "title": "TAG QUESTIONS",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/79"
+    },
+    {
+      "sourceId": "80",
+      "title": "STATEMENTS",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/80"
+    },
+    {
+      "sourceId": "81",
+      "title": "REQUESTS, INVITATIONS, OFFERS",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/81"
+    },
+    {
+      "sourceId": "82",
+      "title": "PRACTICE OF OTHER TYPES OF QUESTIONS",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/82"
+    },
+    {
+      "sourceId": "83",
+      "title": "FINAL PRACTICE (30 questions)",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/83"
+    },
+    {
+      "sourceId": "84",
+      "title": "PART 3 (PRACTICE OF OVERVIEW QUESTIONS)",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/84"
+    },
+    {
+      "sourceId": "85",
+      "title": "PART 3 (PRACTICE OF DETAIL QUESTIONS)",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/85"
+    },
+    {
+      "sourceId": "86",
+      "title": "PART 3 (FINAL PRACTICE - 39 Questions)",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/86"
+    },
+    {
+      "sourceId": "87",
+      "title": "PART 4 (PRACTICE OF OVERVIEW QUESTIONS)",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/87"
+    },
+    {
+      "sourceId": "88",
+      "title": "PART 4 (PRACTICE OF DETAIL QUESTIONS)",
+      "category": "DICTATION",
+      "sourceCategoryId": "16",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/88"
+    },
+    {
+      "sourceId": "89",
+      "title": "BÀI BỔ TRỢ SỐ 1",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/89"
+    },
+    {
+      "sourceId": "90",
+      "title": "BÀI BỔ TRỢ SỐ 2",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/90"
+    },
+    {
+      "sourceId": "91",
+      "title": "BÀI BỔ TRỢ SỐ 3",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/91"
+    },
+    {
+      "sourceId": "92",
+      "title": "BÀI BỔ TRỢ SỐ 4",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/92"
+    },
+    {
+      "sourceId": "93",
+      "title": "LESSON 01 (THỰC HÀNH TRÊN LỚP)",
+      "category": null,
+      "sourceCategoryId": "",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/93"
+    },
+    {
+      "sourceId": "94",
+      "title": "LESSON 01",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/94"
+    },
+    {
+      "sourceId": "95",
+      "title": "LESSON 02",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/95"
+    },
+    {
+      "sourceId": "96",
+      "title": "LESSON 03",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/96"
+    },
+    {
+      "sourceId": "97",
+      "title": "LESSON 04",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/97"
+    },
+    {
+      "sourceId": "98",
+      "title": "LESSON 05",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/98"
+    },
+    {
+      "sourceId": "99",
+      "title": "LESSON 06",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/99"
+    },
+    {
+      "sourceId": "100",
+      "title": "LESSON 07",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/100"
+    },
+    {
+      "sourceId": "101",
+      "title": "LESSON 08",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/101"
+    },
+    {
+      "sourceId": "102",
+      "title": "LESSON 09",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/102"
+    },
+    {
+      "sourceId": "103",
+      "title": "LESSON 10",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/103"
+    },
+    {
+      "sourceId": "104",
+      "title": "LESSON 11",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/104"
+    },
+    {
+      "sourceId": "105",
+      "title": "LESSON 13",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/105"
+    },
+    {
+      "sourceId": "106",
+      "title": "LESSON 14",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/106"
+    },
+    {
+      "sourceId": "107",
+      "title": "LESSON 15",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/107"
+    },
+    {
+      "sourceId": "108",
+      "title": "LESSON 16",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/108"
+    },
+    {
+      "sourceId": "109",
+      "title": "LESSON 17",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/109"
+    },
+    {
+      "sourceId": "110",
+      "title": "LESSON 18",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/110"
+    },
+    {
+      "sourceId": "111",
+      "title": "LESSON 19",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/111"
+    },
+    {
+      "sourceId": "112",
+      "title": "LESSON 20",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/112"
+    },
+    {
+      "sourceId": "113",
+      "title": "LESSON 21",
+      "category": "FOUNDATION",
+      "sourceCategoryId": "17",
+      "sourceUrl": "https://test.toeicbuilding.com.vn/part/selectPart/113"
+    }
+  ]
+}

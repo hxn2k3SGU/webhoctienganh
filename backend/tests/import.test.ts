@@ -23,7 +23,8 @@ async function pdfWithText(lines: string[]): Promise<Buffer> {
 describe("vocabulary import", () => {
   it("normalizes equivalent CSV/XLSX headers and reports invalid rows", () => {
     const result = normalizeRows([{ Vocabulary: "  resilient ", Definition: "able to recover", Tags: "IELTS;hard", Synonyms: "tough, strong", image_url: "https://example.com/resilient.jpg" }, { word: "", meaning: "missing" }]);
-    expect(result.rows[0]).toMatchObject({ word: "resilient", meaning: "able to recover", tag: "IELTS", synonyms: ["tough", "strong"], imageUrl: "https://example.com/resilient.jpg" });
+    expect(result.rows[0]).toMatchObject({ word: "resilient", meaning: "able to recover", tag: "IELTS", synonyms: ["tough", "strong"] });
+    expect(result.rows[0]).not.toHaveProperty("imageUrl");
     expect(result.errors).toEqual([expect.objectContaining({ row: 3 })]);
   });
 

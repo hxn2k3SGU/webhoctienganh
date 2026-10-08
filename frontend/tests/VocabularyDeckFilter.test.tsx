@@ -18,7 +18,7 @@ it('loads the selected deck without stale status, search, tag or page filters', 
   await userEvent.selectOptions(screen.getByLabelText('Bộ flashcard'), 'Part 1');
   await waitFor(() => {
     const params = vi.mocked(api.vocabulary).mock.calls.at(-1)![0];
-    expect(Object.fromEntries(params)).toEqual({ page: '1', pageSize: '12', deck: 'Part 1' });
+    expect(Object.fromEntries(params)).toEqual({ page: '1', pageSize: '12', deck: 'Part 1', sort: 'word', direction: 'asc' });
   });
   expect(screen.queryByRole('button', { name: 'Xóa bộ lọc' })).not.toBeInTheDocument();
   client.clear();

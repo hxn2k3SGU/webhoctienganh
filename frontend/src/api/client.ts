@@ -89,8 +89,6 @@ export const api = {
   progress: () => request<{ streak: number; longest: number; learned: number; studiedToday: boolean; days: string[]; achievements: { id: string; title: string; kind: string; target: number; value: number; unlockedAt: string | null }[] }>('/progress'),
   /** Lấy danh sách deck kèm số thẻ. */
   decks: () => request<{ name: string; count: number }[]>('/decks'),
-  /** Tìm ảnh minh họa cho từ bằng AI. */
-  searchImages: (word: string, meaning: string) => request<{ query: string; images: { url: string; sourceUrl: string; title: string; artist: string; license: string }[] }>('/images/search', { method: 'POST', body: JSON.stringify({ word, meaning }) }),
   /** Đăng ký tài khoản mới. */
   register: (username: string, password: string) => request<AuthResponse>('/auth/register', { method: 'POST', body: JSON.stringify({ username, password }) }),
   /** Kiểm tra hệ thống đã có tài khoản nào chưa. */
@@ -117,8 +115,6 @@ export const api = {
   updateWord: (id: string, data: VocabularyInput) => request<Vocabulary>(`/vocabulary/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
   /** Xóa từ vựng. */
   deleteWord: (id: string) => request<void>(`/vocabulary/${id}`, { method: 'DELETE' }),
-  /** Tải ảnh lên server và nhận lại URL. */
-  uploadMedia: (file: File) => { const body = new FormData(); body.append('file', file); return request<{ url: string; mimeType: string; size: number }>('/media', { method: 'POST', body }); },
   /** Gửi file nhập để server đọc và trả bản xem trước. */
   previewVocabularyImport: async (file: File, metadata: { tag: string; status: WordStatus }) => {
     const body = new FormData(); body.append('file', file);

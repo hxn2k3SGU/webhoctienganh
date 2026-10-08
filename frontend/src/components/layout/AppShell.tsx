@@ -1,5 +1,5 @@
 import { NotificationCenter } from '../NotificationCenter';
-import { BarChart3, BookOpenText, BrainCircuit, Gamepad2, Library, LoaderCircle, LogOut, Moon, Search, Settings, Sun, X } from 'lucide-react';
+import { BarChart3, BookOpenText, BrainCircuit, ClipboardCheck, Gamepad2, Library, LoaderCircle, LogOut, Moon, Search, Settings, Sun, X } from 'lucide-react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useLayoutEffect, useState, type FormEvent } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
@@ -15,6 +15,7 @@ const links = [
   { to: '/vocabulary', label: 'Từ vựng', icon: Library },
   { to: '/study', label: 'Ôn tập', icon: BookOpenText },
   { to: '/quiz', label: 'Quiz', icon: BrainCircuit },
+  { to: '/toeic', label: 'TOEIC', icon: ClipboardCheck },
   { to: '/games', label: 'Game', icon: Gamepad2 },
   { to: '/settings', label: 'Cài đặt', icon: Settings },
 ];

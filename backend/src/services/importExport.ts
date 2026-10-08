@@ -8,7 +8,7 @@ const pdfjs: { getDocument(input: { data: Uint8Array; disableFontFace: boolean }
 
 export const MAX_IMPORT_BYTES = 10 * 1024 * 1024;
 export const IMPORT_TOKEN_TTL_MS = 15 * 60 * 1000;
-export const columns = ["word", "meaning", "example", "pronunciation", "partOfSpeech", "imageUrl", "topic", "tag", "synonyms", "tags"];
+export const columns = ["word", "meaning", "example", "pronunciation", "partOfSpeech", "topic", "tag", "synonyms", "tags"];
 export type ImportKind = "csv" | "xlsx" | "pdf";
 export interface ImportIssue { row: number; message: string }
 export interface ImportPreview { token: string; expiresAt: string; format: ImportKind; rows: ImportRow[]; errors: ImportIssue[] }
@@ -19,7 +19,6 @@ const aliases: Record<string, keyof ImportRow | "tags"> = {
   meaning: "meaning", definition: "meaning", vietnamese: "meaning", nghia: "meaning", "y nghia": "meaning",
   example: "example", "example sentence": "example", sentence: "example", pronunciation: "pronunciation", phonetic: "pronunciation",
   "part of speech": "partOfSpeech", partofspeech: "partOfSpeech", pos: "partOfSpeech",
-  image: "imageUrl", "image url": "imageUrl", imageurl: "imageUrl",
   synonym: "synonyms", synonyms: "synonyms", tag: "tag", topic: "tag", tags: "tags"
 };
 
@@ -45,7 +44,7 @@ function normalizeRecord(raw: Record<string, unknown>): unknown {
   return {
     word: clean(mapped.word), meaning: clean(mapped.meaning), example: clean(mapped.example),
     pronunciation: clean(mapped.pronunciation), partOfSpeech: clean(mapped.partOfSpeech),
-    imageUrl: clean(mapped.imageUrl), synonyms: list(mapped.synonyms), tag: clean(mapped.tag) || tags[0] || "General"
+    synonyms: list(mapped.synonyms), tag: clean(mapped.tag) || tags[0] || "General"
   };
 }
 
@@ -174,8 +173,8 @@ export function consumePreview(token: string, owner?: DB): ImportRow[] {
 export function commitRows(db: DB, rows: ImportRow[], strategy: "skip" | "update", deckName?: string) {
   let imported = 0, updated = 0, skipped = 0;
   const find = db.prepare("SELECT id FROM cards WHERE word=?");
-  const insert = db.prepare(`INSERT INTO cards(word,meaning,example,pronunciation,part_of_speech,topic,image_url,audio_url,tags,synonyms,tag,status) VALUES (@word,@meaning,@example,@pronunciation,@partOfSpeech,@topic,@imageUrl,NULL,@tags,@synonyms,@tag,'new')`);
-  const update = db.prepare(`UPDATE cards SET meaning=@meaning,example=@example,pronunciation=@pronunciation,part_of_speech=@partOfSpeech,topic=@topic,image_url=CASE WHEN @imageUrl<>'' THEN @imageUrl ELSE image_url END,tags=@tags,synonyms=@synonyms,tag=@tag,updated_at=CURRENT_TIMESTAMP WHERE word=@word`);
+  const insert = db.prepare(`INSERT INTO cards(word,meaning,example,pronunciation,part_of_speech,topic,audio_url,tags,synonyms,tag,status) VALUES (@word,@meaning,@example,@pronunciation,@partOfSpeech,@topic,NULL,@tags,@synonyms,@tag,'new')`);
+  const update = db.prepare(`UPDATE cards SET meaning=@meaning,example=@example,pronunciation=@pronunciation,part_of_speech=@partOfSpeech,topic=@topic,tags=@tags,synonyms=@synonyms,tag=@tag,updated_at=CURRENT_TIMESTAMP WHERE word=@word`);
   db.transaction(() => rows.forEach(row => {
     const params = { ...row, example: row.example || null, pronunciation: row.pronunciation || null, partOfSpeech: row.partOfSpeech || null, topic: "work-study", tags: JSON.stringify([row.tag]), synonyms: JSON.stringify(row.synonyms) };
     if (find.get(row.word)) { if (strategy === "skip") { skipped++; return; } else { update.run(params); updated++; } }
@@ -194,6 +193,6 @@ export function parseWorkbook(buffer: Buffer, name: string) {
   return result.rows.map((row, index) => { const topic = clean(rawRows[index].topic); return { ...row, topic: ["daily-life", "travel", "work-study"].includes(topic) ? topic : "work-study", tags: list(rawRows[index].tags).length ? list(rawRows[index].tags) : [row.tag] }; });
 }
 /** Thêm danh sách thẻ, bỏ qua thẻ đã có cùng từ (dùng cho seed và API cũ). */
-export function insertCards(db: DB, cards: any[]) { return db.transaction(() => { for (const card of cards) { const existing = db.prepare("SELECT id FROM cards WHERE word=? ORDER BY id LIMIT 1").get(card.word) as { id: number } | undefined; const values = [card.meaning, card.example || null, card.pronunciation || null, card.partOfSpeech || null, card.topic, JSON.stringify(card.tags || []), (card.tags || [])[0] || card.topic]; if(existing) db.prepare("UPDATE cards SET meaning=?,example=?,pronunciation=?,part_of_speech=?,topic=?,tags=?,tag=?,updated_at=CURRENT_TIMESTAMP WHERE id=?").run(...values,existing.id); else db.prepare("INSERT INTO cards(meaning,example,pronunciation,part_of_speech,topic,tags,tag,word,image_url,audio_url) VALUES (?,?,?,?,?,?,?,?,?,?)").run(...values,card.word,card.imageUrl??null,card.audioUrl??null); } return cards.length; })(); }
+export function insertCards(db: DB, cards: any[]) { return db.transaction(() => { for (const card of cards) { const existing = db.prepare("SELECT id FROM cards WHERE word=? ORDER BY id LIMIT 1").get(card.word) as { id: number } | undefined; const values = [card.meaning, card.example || null, card.pronunciation || null, card.partOfSpeech || null, card.topic, JSON.stringify(card.tags || []), (card.tags || [])[0] || card.topic]; if(existing) db.prepare("UPDATE cards SET meaning=?,example=?,pronunciation=?,part_of_speech=?,topic=?,tags=?,tag=?,updated_at=CURRENT_TIMESTAMP WHERE id=?").run(...values,existing.id); else db.prepare("INSERT INTO cards(meaning,example,pronunciation,part_of_speech,topic,tags,tag,word,audio_url) VALUES (?,?,?,?,?,?,?,?,?)").run(...values,card.word,card.audioUrl??null); } return cards.length; })(); }
 /** Tạo nội dung file CSV hoặc XLSX từ danh sách thẻ. */
-export function exportBuffer(rows: any[], type: "csv" | "xlsx") { const data = rows.map(r => ({ word:r.word, meaning:r.meaning, example:r.example||"", pronunciation:r.pronunciation||"", partOfSpeech:r.part_of_speech||"", imageUrl:r.image_url||"", topic:r.topic, tag:r.tag||r.topic, synonyms:JSON.parse(r.synonyms||"[]").join(";"), tags:JSON.parse(r.tags||"[]").join(";") })); const ws=XLSX.utils.json_to_sheet(data,{header:columns}); if(type==="csv")return Buffer.from(XLSX.utils.sheet_to_csv(ws),"utf8"); const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,"Cards"); return XLSX.write(wb,{type:"buffer",bookType:"xlsx"}); }
+export function exportBuffer(rows: any[], type: "csv" | "xlsx") { const data = rows.map(r => ({ word:r.word, meaning:r.meaning, example:r.example||"", pronunciation:r.pronunciation||"", partOfSpeech:r.part_of_speech||"", topic:r.topic, tag:r.tag||r.topic, synonyms:JSON.parse(r.synonyms||"[]").join(";"), tags:JSON.parse(r.tags||"[]").join(";") })); const ws=XLSX.utils.json_to_sheet(data,{header:columns}); if(type==="csv")return Buffer.from(XLSX.utils.sheet_to_csv(ws),"utf8"); const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,"Cards"); return XLSX.write(wb,{type:"buffer",bookType:"xlsx"}); }

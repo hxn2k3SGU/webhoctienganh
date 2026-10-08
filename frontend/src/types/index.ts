@@ -14,7 +14,6 @@ export interface Vocabulary {
   example?: string;
   partOfSpeech?: string;
   synonyms: string[];
-  imageUrl?: string;
   audioUrl?: string;
   tag: string;
   deck?: string;

@@ -1,0 +1,69 @@
+{
+  "source": "https://test.toeicbuilding.com.vn/part",
+  "completedOn": "2026-10-08",
+  "tests": 55,
+  "questions": 11000,
+  "fullTests": 49,
+  "practiceOnly": [
+    {
+      "title": "ETS 2023 - TEST 3",
+      "affectedQuestions": [
+        89
+      ]
+    },
+    {
+      "title": "TEST 9 ETS 2024",
+      "affectedQuestions": [
+        92,
+        93,
+        94,
+        116,
+        177
+      ]
+    },
+    {
+      "title": "TEST 10 ETS 2024",
+      "affectedQuestions": [
+        2,
+        56,
+        57,
+        58,
+        112,
+        183
+      ]
+    },
+    {
+      "title": "TEST 4 ETS 2026",
+      "affectedQuestions": [
+        92,
+        93,
+        94
+      ]
+    },
+    {
+      "title": "TEST 5 ETS 2026",
+      "affectedQuestions": [
+        92,
+        93,
+        94
+      ]
+    },
+    {
+      "title": "TEST 8 ETS 2026",
+      "affectedQuestions": [
+        26,
+        53,
+        54,
+        55
+      ]
+    }
+  ],
+  "downloadedSourceMedia": 5184,
+  "missingSourceMedia": 4,
+  "dataDirectory": "backend/data/toeicbuilding",
+  "totalBytes": 4466285353,
+  "imageIntegrity": {
+    "checked": 2003,
+    "invalid": []
+  }
+}

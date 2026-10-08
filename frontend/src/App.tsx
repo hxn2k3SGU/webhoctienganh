@@ -10,6 +10,7 @@ import { ArcadePage } from './pages/ArcadePage';
 import { SettingsPage } from './pages/SettingsPage';
 import { StudyPage } from './pages/StudyPage';
 import { VocabularyPage } from './pages/VocabularyPage';
+import { ToeicPage } from './pages/ToeicPage';
 
 /** Khai báo các route của ứng dụng: trang công khai (đăng nhập/đăng ký) và trang cần đăng nhập. */
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="vocabulary" element={<VocabularyPage/>}/>
         <Route path="study" element={<StudyPage/>}/>
         <Route path="quiz" element={<QuizPage/>}/>
+        <Route path="toeic" element={<ToeicPage/>}/>
         <Route path="games" element={<GameCatalogPage/>}/>
         <Route path="games/match" element={<GamesPage key="match" initialMode="match"/>}/>
         <Route path="games/memory" element={<GamesPage key="memory" initialMode="memory"/>}/>
