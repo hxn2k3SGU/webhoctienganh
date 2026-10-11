@@ -21,7 +21,7 @@
 | Phần | Công nghệ |
 | --- | --- |
 | Frontend | React 18, Vite, TypeScript, Tailwind CSS, TanStack Query, React Router, React Hook Form, Recharts |
-| Backend | Node.js, Express, TypeScript, better-sqlite3, Argon2, Zod, Multer |
+| Backend | Node.js, Express, TypeScript, better-sqlite3, scrypt (node:crypto), Zod, Multer |
 | Dùng chung | `packages/shared`: các schema Zod dùng cho cả kiểm tra dữ liệu |
 | Test | Vitest, Testing Library, Supertest |
 
@@ -63,7 +63,7 @@
 - Node.js 20 trở lên
 - npm 10 trở lên
 
-`better-sqlite3` và `argon2` là native module. Nếu `npm install` lỗi trên Windows, hãy dùng bản Node.js LTS và cài [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) với workload **Desktop development with C++**.
+`better-sqlite3` là native module. Nếu `npm install` lỗi trên Windows, hãy dùng bản Node.js LTS và cài [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) với workload **Desktop development with C++**. Băm mật khẩu dùng `scrypt` có sẵn trong Node.js, không cần native addon riêng.
 
 ## Chạy nhanh trên Windows
 
@@ -147,12 +147,20 @@ Các biến đặt trong `backend/.env`:
 
 ## Xác thực
 
-- Mật khẩu được băm bằng Argon2id.
+- Mật khẩu được băm bằng `scrypt` của `node:crypto`, với salt ngẫu nhiên 16 byte, N=131072, r=8, p=1 và so sánh bằng `timingSafeEqual`.
 - **Access token** sống 15 phút, là token có chữ ký HMAC lưu trong cookie `httpOnly`.
 - **Refresh token** sống 7 ngày, chỉ lưu bản băm SHA-256 trong bảng `refresh_tokens`. Mỗi lần dùng, refresh token được xoay vòng (xóa cái cũ, cấp cái mới).
 - Frontend tự refresh trước khi access token hết hạn và khi API trả lỗi 401.
 - Các request thay đổi dữ liệu được bảo vệ bằng CSRF token và kiểm tra origin.
 - Tên đăng nhập dài 3–64 ký tự (chữ không dấu, số, `.`, `_`, `-`); mật khẩu dài 12–256 ký tự.
+
+Tài khoản cũ dùng Argon2 cần đặt lại mật khẩu để đăng nhập sau khi cập nhật. Chạy lệnh sau từ thư mục dự án, thay `ten_dang_nhap` bằng tài khoản cần đổi:
+
+```bash
+npm run auth:reset-password -- ten_dang_nhap
+```
+
+Nhập mật khẩu mới hai lần (ký tự được ẩn). Lệnh giữ nguyên tài khoản, workspace và dữ liệu học, đồng thời thu hồi refresh token của tài khoản đó. Access token đã cấp có thể còn hiệu lực đến khi hết hạn (mặc định 15 phút). Lệnh đọc `backend/.env`; cần trỏ `DATABASE_PATH` tới đúng database đang dùng. Không dùng `db:reset` để đổi mật khẩu vì lệnh đó xóa database.
 
 ## Nhập từ vựng
 

@@ -16,7 +16,8 @@
     "test": "npm run test --workspaces --if-present",
     "db:migrate": "npm run db:migrate -w @lexiloop/backend",
     "db:seed": "npm run db:seed -w @lexiloop/backend",
-    "db:reset": "npm run db:reset -w @lexiloop/backend"
+    "db:reset": "npm run db:reset -w @lexiloop/backend",
+    "auth:reset-password": "npm run auth:reset-password -w @lexiloop/backend --"
   },
   "engines": {
     "node": ">=20.0.0",

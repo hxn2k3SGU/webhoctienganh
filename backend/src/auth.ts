@@ -1,5 +1,5 @@
 import crypto from "node:crypto";
-import argon2 from "argon2";
+import { hashPassword, verifyPassword } from "./password";
 import { Router, type RequestHandler } from "express";
 import { loginSchema } from "@lexiloop/shared";
 import type { DB } from "./db";
@@ -138,7 +138,7 @@ export function authRouter(db: DB, config: AppConfig, loginLimit: RequestHandler
   /** Đăng ký tài khoản mới; tài khoản đầu tiên dùng workspace `legacy`, các tài khoản sau có workspace riêng. */
   router.post("/register", loginLimit, (req, res, next) => { void (async () => {
     const parsed = loginSchema.safeParse(req.body); if (!parsed.success) return res.status(400).json({ error: "VALIDATION_FAILED", details: parsed.error.flatten() }); const input = parsed.data;
-    const passwordHash = await argon2.hash(input.password, { type: argon2.argon2id, memoryCost: 65536, timeCost: 3, parallelism: 1 });
+    const passwordHash = await hashPassword(input.password);
     const user = db.transaction(() => {
       const first = !db.prepare("SELECT 1 FROM users LIMIT 1").get();
       const result = db.prepare("INSERT INTO users(username,password_hash,workspace) VALUES (?,?,?)").run(input.username, passwordHash, first ? "legacy" : "private");
@@ -149,17 +149,17 @@ export function authRouter(db: DB, config: AppConfig, loginLimit: RequestHandler
   /** Tạo tài khoản đầu tiên; trả 409 nếu hệ thống đã có người dùng. */
   router.post("/setup", loginLimit, (req, res, next) => { void (async () => {
     const parsed = loginSchema.safeParse(req.body); if (!parsed.success) return res.status(400).json({ error: "VALIDATION_FAILED", details: parsed.error.flatten() }); const input = parsed.data;
-    const passwordHash = await argon2.hash(input.password, { type: argon2.argon2id, memoryCost: 65536, timeCost: 3, parallelism: 1 });
+    const passwordHash = await hashPassword(input.password);
     const result = db.prepare(`INSERT INTO users(username,password_hash,workspace)
       SELECT ?,?,'legacy' WHERE NOT EXISTS (SELECT 1 FROM users)`).run(input.username, passwordHash);
     if (result.changes !== 1) return res.status(409).json({ error: "SETUP_COMPLETE", message: "Initial setup has already been completed" });
     return sendSession(req, res, { id: Number(result.lastInsertRowid), username: input.username });
   })().catch(next); });
-  /** Đăng nhập bằng tên đăng nhập và mật khẩu (băm Argon2id). */
+  /** Đăng nhập bằng tên đăng nhập và mật khẩu (băm scrypt). */
   router.post("/login", loginLimit, (req, res, next) => { void (async () => {
     const parsed = loginSchema.safeParse(req.body); if (!parsed.success) return res.status(400).json({ error: "VALIDATION_FAILED", details: parsed.error.flatten() }); const input = parsed.data;
     const user = db.prepare("SELECT id,username,password_hash passwordHash FROM users WHERE username=?").get(input.username) as any;
-    const valid = user && await argon2.verify(user.passwordHash, input.password);
+    const valid = user && await verifyPassword(user.passwordHash, input.password);
     if (!valid) return res.status(401).json({ error: "INVALID_CREDENTIALS", message: "Invalid username or password" });
     return sendSession(req, res, { id: user.id, username: user.username });
   })().catch(next); });
@@ -195,6 +195,17 @@ export function authRouter(db: DB, config: AppConfig, loginLimit: RequestHandler
  */
 export async function setAdmin(db: DB, username: string, password: string) {
   const input = loginSchema.parse({ username, password });
-  const passwordHash = await argon2.hash(input.password, { type: argon2.argon2id, memoryCost: 65536, timeCost: 3, parallelism: 1 });
+  const passwordHash = await hashPassword(input.password);
   db.transaction(() => { db.prepare("DELETE FROM refresh_tokens").run(); db.prepare("DELETE FROM users").run(); db.prepare("INSERT INTO users(username,password_hash) VALUES (?,?)").run(input.username, passwordHash); })();
+}
+
+export async function resetPassword(db: DB, username: string, password: string) {
+  const input = loginSchema.parse({ username, password });
+  const user = db.prepare("SELECT id FROM users WHERE username=?").get(input.username) as { id: number } | undefined;
+  if (!user) throw new Error("Account not found");
+  const passwordHash = await hashPassword(input.password);
+  db.transaction(() => {
+    db.prepare("UPDATE users SET password_hash=? WHERE id=?").run(passwordHash, user.id);
+    db.prepare("DELETE FROM refresh_tokens WHERE user_id=?").run(user.id);
+  })();
 }
